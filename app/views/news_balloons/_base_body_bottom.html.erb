@@ -1,7 +1,7 @@
-<% if User.current.last_before_access_on && has_news_since_last_login_on? %>
+<% if has_news_since_last_login_on? then %>
 <div id="news-balloon" style="position: fixed; right: 8px; bottom: 8px;">
   <div style="background-color: #fff0b0; padding: 0px 4px 10px 6px;  border-radius: 8px 8px 8px 8px; min-height: 16px; min-width: 200px;">
-    <%= link_to_function('&times;', "$('news-balloon').hide();", :style => "float: right;") %><br />
+    <%= link_to_function('×', "$('#news-balloon').hide()", :style => "float: right;") %><br />
     <div style="text-align: center;">
     <%= link_to(l(:text_news_add_count, :count => count_news_since_last_login_on), {:controller => 'news', :action => 'index', :project_id => nil}) %>
     </div>

@@ -16,19 +16,19 @@ module NewsBalloonApplicationControllerPatch
     def user_setup_with_last_before_access
       user_setup_without_last_before_access
 
-      if User.current.logged?
-        if User.current.pref[:last_access_on].present?
+      if User.current.logged? then
+        if User.current.pref[:last_access_on].present? then
           User.current.last_before_access_on = User.current.pref[:last_access_on]
         end
-        User.current.pref[:last_access_on] = DateTime.now
+        User.current.pref[:last_access_on] = Time.now
         # saveは後で行う
       end
     end
 
     # ユーザ取得時に書き換えたpref[:last_access_on]を保存する
     def store_last_access_on
-      # リダイレクト時には更新しないでおく
-      if User.current.logged? && User.current.pref.others_changed? && @performed_render && !@performed_redirect
+      # ニュース表示後に保存
+      if User.current.logged? && @news_pages then
         User.current.pref.save
       end
     end

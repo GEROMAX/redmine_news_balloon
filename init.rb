@@ -2,6 +2,7 @@ require 'redmine'
 require 'news_balloon_hook'
 require 'news_balloon_user_patch'
 require 'news_balloon_application_controller_patch'
+require 'news_balloon_application_hepler_patch'
 
 Redmine::Plugin.register :redmine_news_balloon do
   name 'Redmine News Balloon plugin'
@@ -10,4 +11,5 @@ Redmine::Plugin.register :redmine_news_balloon do
   version '0.0.1'
   url 'https://github.com/ameya86/redmine_news_balloon'
   author_url 'http://blog.livedoor.jp/ameya86/'
+  requires_redmine :version_or_higher => '3.0.0'
 end
